@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('owner_name');
             $table->integer('is_approved')->default(0)->comment('0:unapproved 1:approved');
             $table->string('pan_no')->nullable();
-            // $table->foreignId('owner_id')->constrained('users')->onDelete('cascade')->nullable();
+            $table->foreignId('owner_id')->constrained('users')->onDelete('cascade')->nullable();
             $table->timestamps();
         });
     }

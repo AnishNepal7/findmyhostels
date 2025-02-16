@@ -13,4 +13,8 @@ class Hostel extends Model
     {
         return $this->hasMany(Room::class);
     }
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
 }

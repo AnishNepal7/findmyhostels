@@ -28,6 +28,7 @@ class HostelFactory extends Factory
             'is_approved' => $this->faker->boolean(90),  // 90% chance to be approved
             'pan_no' => $this->faker->optional()->word,
             'image' => 'images/hostels/sample.jpg',
+            'owner_id' => null, // Default to null; will be updated in the seeder
         ];
     }
 }

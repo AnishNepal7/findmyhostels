@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Facility;
+use App\Models\Hostel;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HostelOwnerController extends Controller
 {
@@ -29,5 +31,13 @@ public function toggleAvailable($id)
     $room->save();
 
     return redirect()->back()->with('success', 'Room availability updated successfully!');
+}
+public function dashboard()
+{
+    $hostelsCount = Hostel::where('owner_id', Auth::id())->count();
+    $roomsCount = Room::whereHas('hostel', function ($query) {
+        $query->where('owner_id', Auth::id());
+    })->count();
+    return view('owner.dashboard', compact('hostelsCount', 'roomsCount'));
 }
 }
