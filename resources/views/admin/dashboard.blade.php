@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Pending Hostels</h5>
                     <p class="card-text">You have <strong>{{ $pendingHostelsCount }}</strong> hostels pending approval.</p>
-                    <a href="{{ route('admin.hostels.pending') }}" class="btn btn-primary">View Pending Hostels</a>
+                    <a href="{{ route('admin.pendinghostels') }}" class="btn btn-primary">View Pending Hostels</a>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Registered Users</h5>
                     <p class="card-text">There are <strong>{{ $usersCount }}</strong> registered users.</p>
-                    <a href="{{ route('admin.users') }}" class="btn btn-primary">Manage Users</a>
+                    
                 </div>
             </div>
         </div>
