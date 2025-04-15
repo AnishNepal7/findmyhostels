@@ -7,10 +7,10 @@
             <h2 class="text-center mb-4">Hostels</h2>
 
             <!-- Search Form -->
-            <form action="{{ route('hostels.search') }}" method="GET" class="d-flex mb-4">
+            <!-- <form action="{{ route('hostels.search') }}" method="GET" class="d-flex mb-4">
                 <input type="text" name="search" value="{{ old('search', $search ?? '') }}" class="form-control me-2" placeholder="Search Hostels by name or location">
                 <button type="submit" class="btn btn-primary">Search</button>
-            </form>
+            </form> -->
 
             <!-- Hostel List -->
             <div class="row">

@@ -45,10 +45,15 @@
             </a>
 
             <!-- Search Bar -->
-            <form class="d-flex mx-auto w-50">
-                <input class="form-control me-2" type="search" placeholder="Search Hostels..." aria-label="Search">
+            <form action="{{ route('hostels.search') }}" method="GET" class="d-flex mx-auto w-50">
+                <input class="form-control me-2" type="text" name="search" value="{{ old('search', $search ?? '') }}" aria-label="Search">
                 <button class="btn btn-outline-light" type="submit">Search</button>
             </form>
+
+            <!-- <form action="{{ route('hostels.search') }}" method="GET" class="d-flex mb-4">
+                <input type="text" name="search" value="{{ old('search', $search ?? '') }}" class="form-control me-2" placeholder="Search Hostels by name or location">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form> -->
 
             <!-- Navbar Toggler for Mobile View -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,7 +113,7 @@
                     <div class="ms-5">
                         <h5>Follow Us</h5>
                         <div class="social-links">
-                            <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i> Facebook</a>
+                            <a href="https://www.facebook.com/FindmyHostels" target="_blank" class="text-white me-3"><i class="bi bi-facebook"></i> Facebook</a>
                             <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i> Twitter</a>
                             <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i> Instagram</a>
                             <a href="#" class="text-white"><i class="bi bi-linkedin"></i> LinkedIn</a>
