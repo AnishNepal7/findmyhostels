@@ -8,7 +8,7 @@
         <div class="container-fluid py-5 text-center">
             <h1 class="display-5 fw-bold text-primary">Find Your Perfect Hostel</h1>
             <p class="fs-4 text-muted">Discover affordable, safe, and comfortable hostels near you.</p>
-            
+
             <!-- Search Bar -->
             <form action="{{ route('hostels.search') }}" method="GET" class="d-flex justify-content-center">
                 <input type="text" name="search" class="form-control w-50 me-2" placeholder="Search by location or name">
@@ -76,10 +76,18 @@
         </div>
     </div>
 
-    <!-- Call to Action -->
+    <!-- Explore Hostels CTA -->
     <div class="text-center my-5">
         <h3>Ready to find your next hostel?</h3>
         <a href="{{ route('hostels.index') }}" class="btn btn-lg btn-primary mt-3">Explore All Hostels</a>
     </div>
+
+    <!-- Register Hostel CTA -->
+    <div class="text-center my-5 py-5 bg-light rounded shadow-sm">
+        <h3>Own a Hostel? Reach Students Easily.</h3>
+        <p class="text-muted">List your hostel and attract students across Nepal.</p>
+        <a href="{{ url('/hostels/register') }}" class="btn btn-lg btn-outline-success mt-3">Register Your Hostel</a>
+    </div>
+
 </div>
 @endsection

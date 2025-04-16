@@ -96,5 +96,12 @@
         <a href="{{ route('hostels.index') }}" class="btn btn-light mt-3">Explore Hostels Now</a>
     </div>
 
+    <!-- Register Hostel Call to Action -->
+    <div class="text-center mt-4 bg-light text-dark p-4 rounded shadow-sm border">
+        <h4>Do you own a hostel?</h4>
+        <p class="text-muted mb-3">Reach thousands of students and travelers. List your hostel today!</p>
+        <a href="{{ url('hostels/register') }}" class="btn btn-primary">Register Your Hostel</a>
+    </div>
+
 </div>
 @endsection

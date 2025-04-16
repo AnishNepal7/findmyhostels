@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,9 +11,26 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    protected function redirectToDashboard()
+{
+    $user = Auth::user();
+
+    if ($user->hasRole('admin')) {
+        return redirect()->route('admin.dashboard');
+    } elseif ($user->hasRole('hostel_owner')) {
+        return redirect()->route('owner.dashboard');
+    } elseif ($user->hasRole('user')) {
+        return redirect()->route('user.dashboard');
+    }
+
+    return redirect('/'); // fallback just in case
+}
     // display the login page
     public function login()
     {
+        if (Auth::check()) {
+            return $this->redirectToDashboard(); // Send to respective dashboard
+        }
         return view("auth.login");
 
     }
@@ -20,6 +38,9 @@ class AuthController extends Controller
     //display the register page
     public function register()
     {
+        if (Auth::check()) {
+            return $this->redirectToDashboard(); // Send to respective dashboard
+        }
         return view("auth.register");
 
     }
@@ -39,12 +60,16 @@ class AuthController extends Controller
         }
     
         // Create User
-        User::create([
+        $user=User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => bcrypt($request->password),
         ]);
+        $role = Role::where('name', 'user')->first();
+        if ($role) {
+            $user->roles()->attach($role->id);
+        }
     
         return redirect('/login')->with('success', 'Registration successful! Please log in.');
         
@@ -66,16 +91,9 @@ class AuthController extends Controller
         $user = Auth::user();
 
         // Redirect based on the user's role
-        if ($user->hasRole('admin')) {
-            return redirect()->intended('/admin/dashboard');
-        } elseif ($user->hasRole('hostel_owner')) {
-            return redirect()->intended('/owner/dashboard');
-        } elseif ($user->hasRole('user')) {
-            return redirect()->intended('/user/dashboard');
-        }
-
-        // Default fallback (if no role matches)
-        return redirect('/home');
+        return $this->redirectToDashboard();
+     
+       
     }
 
     // If authentication fails, return with an error message

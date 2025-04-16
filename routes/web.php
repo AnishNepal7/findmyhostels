@@ -35,10 +35,7 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'authenticate']);
 Route::post('/register', [AuthController::class, 'store']);
 
-// Hostel Search and Display (Public or Authenticated Users)
-Route::get('/hostels', [HostelController::class, 'index'])->name('hostels.index');
-Route::get('/hostels/search', [HostelController::class, 'search'])->name('hostels.search');
-Route::get('/hostels/{id}', [HostelController::class, 'show'])->name('hostels.show');
+
 
 // Authenticated User Routes (Role: user)
 Route::middleware(['auth', 'role:user'])->group(function () {
@@ -75,4 +72,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/hostels/{hostel}/edit', [HostelController::class, 'edit'])->name('hostels.edit');
     Route::put('/hostels/{hostel}', [HostelController::class, 'update'])->name('hostels.update');
     Route::delete('/hostels/{hostel}', [HostelController::class, 'destroy'])->name('hostels.destroy');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/dashboard',[AuthController::class,'redirectToDashboard'])->name('dashboard');
+
 });
+
+
+// Hostel Search and Display (Public or Authenticated Users)
+Route::get('/hostels', [HostelController::class, 'index'])->name('hostels.index');
+Route::get('/hostels/search', [HostelController::class, 'search'])->name('hostels.search');
+Route::get('/hostels/{id}', [HostelController::class, 'show'])->name('hostels.show');

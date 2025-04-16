@@ -54,12 +54,14 @@ class HostelController extends Controller
 
         $hostel = new Hostel();
         $hostel->name = $request->name;
+        $hostel->owner_name=$request->owner_name;
         $hostel->location = $request->location;
         $hostel->description = $request->description;
         $hostel->pan_no = $request->pan_no;
-        // $hostel->owner_id = Auth::id(); // Assign logged-in user as owner
-        $hostel->owner_id=1;
+        $hostel->owner_id = Auth::id(); // Assign logged-in user as owner
+        // $hostel->owner_id=1;
         $hostel->is_approved = 0; // Pending admin approval
+        $hostel->status=0;
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('hostels', 'public');
