@@ -24,6 +24,7 @@ class AdminController extends Controller
     
         // Approve the hostel
         $hostel->is_approved = 1;
+        $hostel->status=1;
         $hostel->save();
     
         // Get the owner (user) of the hostel using the relationship

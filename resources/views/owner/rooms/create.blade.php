@@ -8,6 +8,15 @@
         </div>
         <div class="card-body" style="overflow-y: auto;  width: 100%;">
             <form action="{{ route('owner.storeRoom') }}" method="POST" enctype="multipart/form-data">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
                 @csrf
                 
                 <div class="mb-3 mt-4">
@@ -21,9 +30,12 @@
                 </div>
                 
                 <div class="mb-3">
-                    <label for="available" class="form-label">Available Rooms</label>
-                    <input type="number" name="available" id="available" class="form-control" min="0" required>
-                </div>
+    <label for="available" class="form-label">Availability</label>
+    <select name="available" id="available" class="form-select" required>
+        <option value="1">Available</option>
+        <option value="0">Not Available</option>
+    </select>
+</div>
                 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>

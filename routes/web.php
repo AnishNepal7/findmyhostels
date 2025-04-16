@@ -59,7 +59,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 // Hostel Owner Routes (Role: hostel_owner or admin)
 Route::middleware(['auth', 'role:hostel_owner,admin'])->group(function () {
     Route::get('/owner/rooms', [HostelOwnerController::class, 'rooms'])->name('owner.rooms');
-    Route::get('/owner/createroom', [HostelOwnerController::class, 'createroom'])->name('owner.createRoom');
+    Route::get('/owner/createroom/', [HostelOwnerController::class, 'createroom'])->name('owner.createRoom');
     Route::post('/owner/storeroom', [HostelOwnerController::class, 'storeroom'])->name('owner.storeRoom');
     Route::get('/owner/editroom/{id}', [HostelOwnerController::class, 'editroom'])->name('owner.editRoom');
     Route::post('/owner/deleteroom/{id}', [HostelOwnerController::class, 'deleteroom'])->name('owner.deleteRoom');

@@ -21,7 +21,7 @@
         </thead>
         <tbody>
             @forelse ($pendingHostels as $hostel)
-                <tr data-href="{{ route('hostels.adminshow', $hostel->id) }}" class="clickable-row">
+                <tr data-href=" " class="clickable-row">
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $hostel->name }}</td>
                     <td>{{ $hostel->location }}</td>

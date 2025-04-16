@@ -37,8 +37,8 @@
                         <!-- Change Availability Button -->
                         <form action="{{ route('owner.toggleAvailable', $room->id) }}" method="POST" style="display:inline;">
                             @csrf
-                            <button type="submit" class="btn btn-sm {{ $room->available == 1 ? 'btn-danger' : 'btn-success' }}">
-                                {{ $room->available == 1 ? 'Make Unavailable' : 'Make available' }}
+                            <button type="submit" class="btn btn-sm {{ $room->available ? 'btn-danger' : 'btn-success' }}">
+                                {{ $room->available  ? 'Make Unavailable' : 'Make available' }}
                             </button>
                         </form>
                     </td>
